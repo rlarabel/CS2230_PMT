@@ -1,0 +1,121 @@
+PMT: Cashback Rewards
+
+EZCash is a new credit card company that is offering customers attractive rates in addition to giving them the opportunity to earn some cash back on purchases. The CS department at an educational institution applies for and receives three credit cards (each from a different category) from EZCash for departmental expenses. At the beginning of each month, the departmental secretary needs to accumulate the monthly credit card expenses and determine what cash back will be received for expenses made with each of the credit cards, and the total cash back expected from all three cards. The amount of cash back for each type of card is determined as follows.
+
+Elite card: 10% cashback on all online purchases, 5% cashback on gas purchases, and 2% on all other purchases.
+Classic card: 7% cashback on all online purchases, 4% cashback on gas purchases, and 2% on all other purchases.
+VIP card: 5% cashback on all online purchases and 2% on all other purchases.
+
+Write a Python application to assist the departmental secretary to compute the cashback amounts expected from each credit card and the total cashback amount from all their EZCash credit cards. Your application should have the following classes:
+
+•	CreditCard 
+•	Classes Elite, Classic, and VIP which are subclasses of CreditCard
+•	Class Customer
+
+Note:
+?	Each class (including subclasses) should have an appropriate initializer method that initializes any attributes you think are necessary with their appropriate values.
+?	Superclass method(s) should be overridden in the subclasses where appropriate.
+
+Note: You should not make any changes to the method names or parameter lists for the methods shown for each class.
+
+The test function main() is also provided and should not be modified.
+
+The methods in class Customer are shown below:
+
+class Customer:
+    def __init__ ... 
+
+    # Add credit card ‘card’ to list of cards
+    def add_credit_card(self, card):
+
+    # Return list of cards
+    def get_credit_cards(self):
+    # Calculate total cost of all cards for this customer and return total.
+    def calculate_total_cashback(self):
+
+The methods in the CreditCard class are shown below:
+
+class CreditCard:
+    def __init__(self, ...):
+
+    # Return this credit card's description.
+    def get_description(self):
+
+    # Return the type of this card
+    def get_type(self):
+
+    # Calculate and return the cashback amount for this credit card.
+    def get_cashback_amount(self):
+
+Also, you should test your classes using the main function below (which should not be modified):
+
+def main():
+cust = Customer()
+card1 = Elite("Convocation Luncheon", 100, 25, 150)   # (description, online_exp, gas_exp, other_exp)
+card2 = Classic("Faculty Supplies", 80, 40, 50)     # (description, online_exp, gas_exp, other_exp)
+card3 = VIP("Miscellaneous", 50, 100)   # (description, online_exp, other_exp)
+
+cust.add_credit_card(card1)
+cust.add_credit_card(card2)
+cust.add_credit_card(card3)
+
+cards = cust.get_credit_cards()
+
+print("List of Credit Card Expenses")
+print("============================\n")
+
+print(f'{"Card":<15}{"Description":<25}{"Cash-back"}')
+print(f'{"----":<15}{"-----------":<25}{"--------"}')
+
+for i in range(len(cards)):
+    print(
+        f'{cards[i].get_type():<15}{cards[i].get_description():<25}{"$"}'
+        f'{cards[i].get_cashback_amount():>6,.2f}')
+
+print()
+print(
+    f'{"Total cash-back: $"}{cust.calculate_total_cashback():>6,.2f}')
+
+card4 = Elite("Convocation Awards", 200, 0, 150)   # (description, online_exp, gas_exp, other_exp)
+card5 = Classic("Staff Appreciation", 250, 50, 150)   # (description, online_exp, gas_exp, other_exp)
+
+cust.add_credit_card(card4)
+cust.add_credit_card(card5)
+
+print()
+for i in range(len(cards)):
+    print(
+        f'{cards[i].get_type():<15}{cards[i].get_description():<25}{"$"}'
+        f'{cards[i].get_cashback_amount():>6,.2f}')
+
+print()
+print(
+    f'{"Total cash-back: $"}{cust.calculate_total_cashback():>6,.2f}')
+
+
+
+Expected output:
+List of Credit Card Expenses
+============================
+
+Card           Description              Cash-back
+----           -----------              --------
+Elite Card     Convocation Luncheon     $ 14.25
+Classic Card   Faculty Supplies         $  8.20
+VIP Card       Miscellaneous            $  4.50
+
+Total cash-back: $ 26.95
+
+Elite Card     Convocation Luncheon     $ 14.25
+Classic Card   Faculty Supplies         $  8.20
+VIP Card       Miscellaneous            $  4.50
+Elite Card     Convocation Awards       $ 23.00
+Classic Card   Staff Appreciation       $ 22.50
+
+Total cash-back: $ 72.45
+
+Process finished with exit code 0
+
+PMT Submission 
+Submit your completed program to the dropbox before it closes.
+
